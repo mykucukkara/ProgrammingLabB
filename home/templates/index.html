@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>İlk Django Projem</title>
-</head>
-<body>
-<h1>Sakarya Uygulamalı Bilimler Üniversitesi</h1>
-<h2>Bilgisayar Mühendisliği</h2>
-{{ text2 }}
-</body>
-</html>
+{%  extends "homebase.html" %}
+
+{% block header %}{% include "header.html" %}{% endblock %}
+{% block sidebar %}{% include "sidebar.html" %}{% endblock %}
+{% block content %}{% include "content.html" %}{% endblock %}
+{% block footer %}{% include "footer.html" %}{% endblock %}
