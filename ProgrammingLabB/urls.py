@@ -26,7 +26,12 @@ urlpatterns = [
     path('',include('home.urls')),
     path('admin/', admin.site.urls),
     path('category/<int:id>/<slug:slug>', views.category_products, name='category_products'),
-    path('product/<int:id>/<slug:slug>', views.product_detail, name='product_detail')
+    path('product/<int:id>/<slug:slug>', views.product_detail, name='product_detail'),
+    path('login/',views.login_view,name='login_view'),
+    path('logout/',views.logout_view,name='logout_view'),
+    path('register/',views.signup_view,name='signup_view'),
+    path('user/',include('user.urls')),
+
 ]
 
 if settings.DEBUG: # new

@@ -1,0 +1,29 @@
+{%  extends "homebase.html" %}
+
+{% block header %}{% include "header.html" %}{% endblock %}
+{% block sidebar %}{% include "sidebar.html" %}{% endblock %}
+{% block content %}
+                        <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Register</h5>
+
+            <form method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                    <p>
+                    {{ field.label_tag }}<br>
+                    {{ field }}
+                    {% if field.help_text %}<br>
+                        <small style="color:grey">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                     {% endfor %}
+                    </p>
+                {% endfor %}
+            <input type="submit" class="btn btn-inverse" value="Sign Up">
+            </form>
+                    </div>
+
+{% endblock %}
+
+{% block footer %}{% include "footer.html" %}{% endblock %}

@@ -1,0 +1,75 @@
+{%  extends "homebase.html" %}
+{% load static %}
+{% block title %} {% for setting in settings %} {{ setting.title}}{% endfor %} {% endblock %}
+{% block header%} {% include 'header.html' %}{% endblock %}
+{% block sidebar%} {% include 'sidebar.html' %}{% endblock %}
+{% block content %}
+    {% if user.id is not None  %}
+    <link href="{% static 'css/style2.css' %}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippets bootdey">
+<div class="row">
+  <div class="profile-nav col-md-3">
+      <div class="panel">
+          <div class="user-heading round">
+              <a href="#">
+                  <img src="{{ user.image.url}}" alt="">
+              </a>
+              <h1>{{ user.user.first_name }} {{ user.user.last_name }}</h1>
+              <p>{{ user.user.email}}</p>
+          </div>
+
+          <ul class="nav nav-pills nav-stacked">
+              <li class="active"><a href="#"> <i class="fa fa-user"></i> Profile</a></li>
+              <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span class="label label-warning pull-right r-activity">9</span></a></li>
+              <li><a href="#"> <i class="fa fa-edit"></i> Edit profile</a></li>
+          </ul>
+      </div>
+  </div>
+  <div class="profile-info col-md-9">
+
+      <div class="panel">
+
+          <div class="panel-body bio-graph-info">
+              <h1>{{ user.user.username}}'s Profile</h1>
+              <div class="row">
+                  <div class="bio-row">
+                      <p><span>First Name </span>: {{ user.user.first_name }}</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Last Name </span>: {{ user.user.last_name }}</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Country </span>: {{ user.country }}</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>User Created Time</span>: {{ user.user.date_joined }}</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>User Last Login Time </span>: {{ user.user.last_login}} </p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Email </span>: {{ user.user.email}}</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Mobile </span>:{{user.phone}}</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Address </span>: {{ user.address }}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div>
+
+      </div>
+  </div>
+</div>
+</div>
+    {% else %}
+        <center><p>lütfen <a href="/login/">giriş</a> yapiniz</p></center>
+    {% endif %}
+{% endblock %}
+
+
+{% block footer %}{% include "footer.html" %}{% endblock %}
